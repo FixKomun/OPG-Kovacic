@@ -11,7 +11,6 @@ import {
   pAnimationRight,
   pAnimationBottom,
   pAnimationBottom2,
-  pAnimationTop,
   imgAnimationRight,
   imgAnimationLeft,
 } from "../animations/mainAnimations";
@@ -135,20 +134,20 @@ const Main = () => {
         <div className="layout-main-smaller">
           <div className="mission ">
             <motion.div
-              variants={pAnimationTop}
+              variants={pAnimationBottom2}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.7 }}
               className="left"
             >
               <motion.h2
-                variants={pAnimationTop}
+                variants={pAnimationBottom2}
                 viewport={{ once: true, amount: 0.7 }}
                 className="h4"
               >
                 Misija
               </motion.h2>
-              <motion.p variants={pAnimationTop}>
+              <motion.p variants={pAnimationBottom2}>
                 Suvremena poljoprivredna proizvodnja koja prati sve trendove
                 održivog gospodarenja. Uz <span> &quot;Know How&quot;</span>{" "}
                 postizanje maksimalne proizvodnje po jedinici površine uz bitno

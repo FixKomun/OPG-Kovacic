@@ -96,8 +96,53 @@ const FooterStyled = styled(motion.footer)`
             height: 30px;
             margin: 0rem 1rem;
             cursor: pointer;
+            transition: all 0.2s ease;
+            &:hover {
+              transform: scale(1.1);
+            }
           }
         }
+      }
+    }
+    @media (max-width: 550px) {
+      .right-container {
+        .logo-container {
+          .socials {
+            img {
+              width: 24px;
+              height: 24px;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 760px) {
+    .layout-main-smaller {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding: 0rem 2rem;
+    }
+  }
+  @media (max-width: 360px) {
+    .right-container {
+      .image-eu {
+        img {
+          transform: scale(0.8);
+        }
+      }
+    }
+    .left-container {
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+  @media (max-width: 300px) {
+    .left-container {
+      p {
+        font-size: 16px;
       }
     }
   }

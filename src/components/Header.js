@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 //Images
-import logo from "../img/logo.png";
+import logo from "../img/logo.svg";
 //Translation
 import { useTranslation } from "react-i18next";
 
@@ -63,9 +63,10 @@ const StyledHeader = styled(motion.header)`
     display: flex;
     align-items: flex-end;
     padding: 1rem 0rem;
+    gap: 1rem;
     img {
-      max-height: 60px;
-      width: 100%;
+      height: 60px;
+      width: 60px;
     }
     .logo-title {
       font-size: 1.4rem;
@@ -86,6 +87,10 @@ const StyledHeader = styled(motion.header)`
       &.active {
         font-weight: bold;
       }
+    }
+    @media (max-width: 415px) {
+      display: flex;
+      flex-direction: column;
     }
   }
 `;

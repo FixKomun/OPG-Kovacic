@@ -5,6 +5,17 @@ import { motion } from "framer-motion";
 //Cloudinary
 import { Cloudinary } from "@cloudinary/url-gen";
 import { AdvancedImage } from "@cloudinary/react";
+//Animation
+import {
+  pAnimationLeft,
+  pAnimationRight,
+  pAnimationBottom,
+  pAnimationBottom2,
+  pAnimationTop,
+  imgAnimationRight,
+  imgAnimationLeft,
+} from "../animations/mainAnimations";
+import { pageAnimation } from "./../animations/pageAnimation";
 const Main = () => {
   //Cloudinary init
   const cld = new Cloudinary({
@@ -25,7 +36,12 @@ const Main = () => {
     "v1675789463/opg-kovacic/Main/misija_1.64e722474fc50934af1c_dz6e7z.png"
   );
   return (
-    <MainStyled>
+    <MainStyled
+      variants={pageAnimation}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+    >
       <div className="hero-container">
         <div className="image">
           <AdvancedImage cldImg={mainImage} alt="ravnica" />
@@ -35,77 +51,147 @@ const Main = () => {
         <div className="hero-wrap">
           <div className="layout-main">
             <h1 className="hero-title">
-              <span className="title-1">Suvremena</span>
-              <span className="title-2">poljoprivredna</span>
-              <span>tehnologija</span>
+              <motion.span
+                initial={{ x: "-100%", opacity: 0 }}
+                animate={{ x: "0%", opacity: 1 }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+                className="title-1"
+              >
+                Suvremena
+              </motion.span>
+              <motion.span
+                initial={{ y: "-100%", opacity: 0 }}
+                animate={{ y: "0%", opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.5 }}
+                className="title-2"
+              >
+                poljoprivredna
+              </motion.span>
+              <motion.span
+                initial={{ x: "100%", opacity: 0 }}
+                animate={{ x: "0%", opacity: 1 }}
+                transition={{ duration: 0.7, ease: "easeOut", delay: 1 }}
+                className="title-3"
+              >
+                tehnologija
+              </motion.span>
             </h1>
           </div>
         </div>
       </div>
       <Section className="layout-main-smaller">
         <div className="info-container">
-          <ul className="left-info">
-            <li className="info-1">
+          <motion.ul
+            variants={pAnimationLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            className="left-info"
+          >
+            <motion.li variants={pAnimationLeft} className="info-1">
               <span> OPG KOVAČIĆ</span> osnovan je 2011 godine od koje se
               aktivno bavi poljoprivrednom proizvodnjom.
-            </li>
-            <li className="info-2">
+            </motion.li>
+            <motion.li variants={pAnimationLeft} className="info-2">
               Radi proširenja poslovanja osim primarne poljoprivredne
               proizvodnje OPG u 2021 godini kreće sa pružanjem usluga s
               poljoprivrednom mehanizacijom, uređajima i alatima koje obuhvaćaju
               rad s traktorima i drugim poljoprivrednim strojevima.{" "}
-            </li>
-          </ul>
-          <ul className="right-info">
-            <li className="info-3">
+            </motion.li>
+          </motion.ul>
+          <motion.ul
+            variants={pAnimationRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            className="right-info"
+          >
+            <motion.li variants={pAnimationRight} className="info-3">
               Na OPG -u se proizvode{" "}
               <span>žitarice, industrijsko bilje i povrće.</span>
-            </li>
-            <li className="info-4">
+            </motion.li>
+            <motion.li variants={pAnimationRight} className="info-4">
               Značajnu ulogu za proširenje djelatnosti imao je prolazak na mjeri{" "}
               <span> 6.2.1. ruralnog razvoja</span>, potpora u pokretanje
               nepoljoprivrednih djelatnosti u ruralnim područjima.
-            </li>
-          </ul>
+            </motion.li>
+          </motion.ul>
         </div>
         <div className="bottom-info">
-          <p>
+          <motion.p
+            variants={pAnimationBottom}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             Nositelj <span>Ivan Kovačić</span> je nakon završetka Poljoprivredne
             škole u Požegi nastavio školovanje na Agronomskom fakultetu u
             Zagrebu i stekao titulu <span>magistar inžejner agronomije </span>
             smjera fitomedicina.
-          </p>
+          </motion.p>
         </div>
       </Section>
       <MisVis>
         <div className="layout-main-smaller">
           <div className="mission ">
-            <div className="left">
-              <h2 className="h4">Misija</h2>
-              <p>
+            <motion.div
+              variants={pAnimationTop}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.7 }}
+              className="left"
+            >
+              <motion.h2
+                variants={pAnimationTop}
+                viewport={{ once: true, amount: 0.7 }}
+                className="h4"
+              >
+                Misija
+              </motion.h2>
+              <motion.p variants={pAnimationTop}>
                 Suvremena poljoprivredna proizvodnja koja prati sve trendove
                 održivog gospodarenja. Uz <span> &quot;Know How&quot;</span>{" "}
                 postizanje maksimalne proizvodnje po jedinici površine uz bitno
                 vođenje brige o <span> održivosti i očuvanju biotopa.</span>
-              </p>
-            </div>
-            <div className="right">
+              </motion.p>
+            </motion.div>
+            <motion.div
+              variants={imgAnimationRight}
+              initial="hidden"
+              whileInView="visible"
+              className="right"
+              viewport={{ once: true, amount: 0.3 }}
+            >
               <AdvancedImage cldImg={misija_1} alt="mission" />
-            </div>
+            </motion.div>
           </div>
           <div className="vision">
-            <div className="left">
+            <motion.div
+              variants={imgAnimationLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              className="left"
+            >
               <AdvancedImage cldImg={misija_2} alt="vision" />
-            </div>
-            <div className="right">
-              <h2 className="h4">Vizija</h2>
-              <p>
+            </motion.div>
+            <motion.div
+              variants={pAnimationBottom2}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              className="right"
+            >
+              <motion.h2 variants={pAnimationBottom2} className="h4">
+                Vizija
+              </motion.h2>
+              <motion.p variants={pAnimationBottom2}>
                 Uz primarnu proizvodnju <span>širenje</span> poslovanja u sektor
                 pružanja usluga u poljoprivredi. <span>Ulaganje</span> u obradu
                 poljoprivrednih proizvoda postizanje finalnog proizvoda i
                 prodaja direktno kupcu.
-              </p>
-            </div>
+              </motion.p>
+            </motion.div>
           </div>
         </div>
       </MisVis>
@@ -119,7 +205,7 @@ const MainStyled = styled(motion.main)`
     z-index: 1;
     .image {
       width: 100%;
-      height: 30rem;
+      height: 50rem;
       img {
         height: 100%;
         width: 100%;
@@ -149,32 +235,101 @@ const MainStyled = styled(motion.main)`
     }
     .hero-title {
       transform: translate(0%, 50%);
+      display: inline-block;
+      overflow: hidden;
       span {
         display: block;
         color: white;
-        font-size: 70px;
+        font-size: 80px;
         font-style: normal;
         font-weight: 800;
-        line-height: 73px;
+        line-height: 100px;
+        padding: 0rem 1rem;
+      }
+    }
+  }
+  @media (max-width: 900px) {
+    .hero-container {
+      .hero-title {
+        span {
+          font-size: 60px;
+          line-height: 80px;
+        }
+      }
+      .image {
+        height: 40rem;
+      }
+    }
+  }
+  @media (max-width: 740px) {
+    .hero-container {
+      .hero-title {
+        span {
+          font-size: 60px;
+          line-height: 80px;
+        }
+      }
+    }
+  }
+  @media (max-width: 550px) {
+    .hero-container {
+      .hero-title {
+        span {
+          font-size: 40px;
+          line-height: 60px;
+        }
+      }
+      .image {
+        height: 33rem;
+      }
+    }
+  }
+  @media (max-width: 390px) {
+    .hero-container {
+      .hero-title {
+        span {
+          font-size: 30px;
+          line-height: 40px;
+        }
+      }
+      .image {
+        height: 24rem;
+      }
+    }
+  }
+  @media (max-width: 300px) {
+    .hero-container {
+      .hero-title {
+        span {
+          font-size: 24px;
+          line-height: 40px;
+        }
+      }
+      .image {
+        height: 22rem;
       }
     }
   }
 `;
 
 const Section = styled(motion.section)`
-  padding: 0rem 2rem;
+  padding: 2rem 2rem;
 
   .info-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 10rem;
     padding-top: 5rem;
-    padding-bottom: 3rem;
-
+    padding-bottom: 5rem;
+    overflow: hidden;
     ul {
       li {
         padding: 1rem 0rem;
       }
+    }
+    .left-info,
+    .right-info {
+      padding-left: 2rem;
     }
   }
   .bottom-info {
@@ -184,6 +339,66 @@ const Section = styled(motion.section)`
       padding: 2rem 2rem;
       z-index: 3;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    }
+  }
+  @media (max-width: 900px) {
+    .info-container {
+      grid-template-columns: none;
+      grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+  }
+  @media (max-width: 740px) {
+  }
+  @media (max-width: 550px) {
+    .info-container {
+      ul {
+        li {
+          font-size: 18px;
+        }
+      }
+    }
+    .bottom-info {
+      p {
+        font-size: 18px;
+      }
+    }
+  }
+  @media (max-width: 390px) {
+    padding: 0rem 0.7rem;
+    .info-container {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      .left-info,
+      .right-info {
+        padding-left: 1rem;
+      }
+      ul {
+        li {
+          font-size: 14px;
+        }
+      }
+    }
+    .bottom-info {
+      padding-bottom: 2rem;
+      p {
+        font-size: 14px;
+        padding: 1rem 1rem;
+      }
+    }
+  }
+  @media (max-width: 300px) {
+    .info-container {
+      ul {
+        li {
+          font-size: 12px;
+        }
+      }
+    }
+    .bottom-info {
+      p {
+        font-size: 12px;
+      }
     }
   }
 `;
@@ -197,12 +412,17 @@ const MisVis = styled(motion.div)`
   );
   color: white;
   padding: 5rem 1rem;
+  overflow: hidden;
   .mission,
   .vision {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 5rem;
     align-items: center;
+    .left,
+    .right {
+      overflow: hidden;
+    }
     h2 {
       padding-bottom: 1rem;
     }
@@ -210,14 +430,64 @@ const MisVis = styled(motion.div)`
       width: 100%;
       object-fit: cover;
     }
+    p {
+      line-height: 30px;
+    }
   }
   .mission {
     margin-bottom: 3rem;
   }
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 760px) {
     .vision {
       .left {
         order: 1;
+      }
+    }
+  }
+  @media (max-width: 900px) {
+    .mission,
+    .vision {
+      p {
+        line-height: 25px;
+        font-size: 19px;
+      }
+    }
+  }
+  @media (max-width: 740px) {
+  }
+  @media (max-width: 550px) {
+    .mission,
+    .vision {
+      p {
+        font-size: 18px;
+      }
+      h2 {
+        font-size: 30px;
+      }
+    }
+  }
+  @media (max-width: 390px) {
+    .mission,
+    .vision {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 5rem;
+      p {
+        font-size: 14px;
+        line-height: 22px;
+      }
+      h2 {
+        font-size: 24px;
+      }
+    }
+  }
+  @media (max-width: 300px) {
+    .mission,
+    .vision {
+      p {
+        font-size: 14px;
+      }
+      h2 {
+        font-size: 20px;
       }
     }
   }

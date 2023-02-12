@@ -13,6 +13,9 @@ const GlobalStyle = createGlobalStyle`
         text-decoration:none;
         font-size:1rem;
     }
+    body{
+        overflow-x:hidden;
+    }
     button{
         font-family:"Montserrat",sans-serif;
     }
@@ -78,9 +81,7 @@ const GlobalStyle = createGlobalStyle`
     }
     .carousel {
         max-height: 700px;
-        .thumbs-wrapper {
-            overflow:visible;
-        }  
+        
         .carousel-status {
             font-size: 1rem;
             color: black;
@@ -93,7 +94,60 @@ const GlobalStyle = createGlobalStyle`
     .input-error {
       color: #b90e0e;
     }
+   @media (max-width:900px){
+   div.carousel{
+    border-radius:0;
+   }
+    .carousel-1.layout-main{
+        padding:0;
+        .control-arrow{
+            padding:1rem;
+        }
+    }
+   }
+   @media (max-width:740px){}
+   @media (max-width:550px){
+  
+    .carousel-root.layout-main{
+        padding:0;
+        .control-arrow{
+            padding:0.5rem;
+        }
+        .carousel{
+            .control-dots{
+            li{
+            width:14px;
+            height:14px;
+            } 
+        }
+        }
+     
+      
+    }
+   }
+   @media (max-width:390px){
+  
+    .layout-main-smaller{
+        padding:0.5rem 0.5rem;
+        margin-bottom:0;
+    }
+    .carousel-root.layout-main{
+        padding-bottom:5rem;
+        .carousel{
+            .control-arrow{
+            padding:0.1rem;
+        }
+        .control-dots{
+            li{
+            width:10px;
+            height:10px;
+            } 
+        }
+    }
+    }
    
+   }
+   @media (max-width:300px){}
 `;
 
 export default GlobalStyle;

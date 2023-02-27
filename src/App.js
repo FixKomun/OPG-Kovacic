@@ -1,8 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import GlobalStyle from "./globalStyle";
-//import styled from "styled-components";
-//import { motion } from "framer-motion";
-//Images
 //Router
 import { Routes, Route } from "react-router-dom";
 //Components
@@ -15,8 +12,15 @@ import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
 import { Navigate, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import { Accessibility } from "accessibility";
 function App() {
   const location = useLocation();
+  useEffect(() => {
+    const accessibility = new Accessibility();
+    return () => {
+      accessibility.destroy();
+    };
+  }, []);
 
   return (
     <div className="App">
